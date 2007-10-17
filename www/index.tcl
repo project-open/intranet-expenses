@@ -93,7 +93,7 @@ set admin_links ""
 set bulk_actions_list "[list]"
 
 if {$add_expense_p} {
-    append admin_links "<li><a href=\"new?[export_url_vars project_id return_url]\">[_ intranet-expenses.Add_a_new_Expense]</a>\n"
+    append admin_links "<li><a href=\"new?[export_url_vars project_id return_url]\">[_ intranet-expenses.Add_a_new_Expense]</a></li>\n"
     lappend bulk_actions_list "[_ intranet-expenses.Delete]" "expense-del" "[_ intranet-expenses.Delete_Expenses]"
 }
 
