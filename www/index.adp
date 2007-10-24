@@ -2,9 +2,8 @@
 <property name="title">@page_title@</property>
 <property name="context">@context_bar@</property>
 <property name="main_navbar_label">@main_navbar_label@</property>
+<property name="sub_navbar">@sub_navbar;noquote@</property>
 
-<br>
-@project_menu;noquote@
 
 <div class="filter-list">
    <div class="filter">
