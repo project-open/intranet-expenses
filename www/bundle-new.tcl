@@ -400,26 +400,27 @@ template::list::create \
 
 set def_currency [parameter::get -package_id [apm_package_id_from_key intranet-cost] -parameter "DefaultCurrency" -default 'EUR']
 
+
 set expense_lines_sql "
-	select
-		c.*,
-		e.*,
-		acs_object__name(provider_id) as provider_name,
-		to_char(effective_date, :date_format) as effective_date,
+        select
+                c.*,
+                e.*,
+                acs_object__name(provider_id) as provider_name,
+                to_char(effective_date, :date_format) as effective_date,
                 to_char(((c.amount * c.vat/100) + c.amount)*e.reimbursable/100,:cur_format) as amount_reimbursable,
-		round(((c.amount * c.vat/100) + c.amount) * (e.reimbursable/100) * im_exchange_rate(c.effective_date::date, c.currency, '$def_currency') :: numeric, 2) as amount_reimbursable_converted,
-		im_category_from_id(expense_type_id) as expense_type,
-		im_category_from_id(expense_payment_type_id) as expense_payment_type,
-		p.project_name
-	from
-		im_expenses e,
-		im_costs c
-		LEFT OUTER JOIN im_projects p on (c.project_id = p.project_id)
-	where
-		e.expense_id = c.cost_id and
-		e.bundle_id = :bundle_id
-	order by
-		c.effective_date
+                round(((c.amount * c.vat/100) + c.amount) * (e.reimbursable/100) * im_exchange_rate(c.effective_date::date, c.currency, '$def_currency') :: numeric, 2) as amount_reimbursable_converted,
+                im_category_from_id(expense_type_id) as expense_type,
+                im_category_from_id(expense_payment_type_id) as expense_payment_type,
+                p.project_name
+        from
+                im_expenses e,
+                im_costs c
+                LEFT OUTER JOIN im_projects p on (c.project_id = p.project_id)
+        where
+                e.expense_id = c.cost_id and
+                e.bundle_id = :bundle_id
+        order by
+                c.effective_date
 "
 
 set first_loop_p 1
@@ -463,6 +464,7 @@ db_multirow -extend {project_url expense_new_url provider_url} expense_lines exp
     set provider_url [export_vars -base "/intranet/companies/view" {{company_id $provider_id} return_url}]
     set project_url [export_vars -base "/intranet/projects/view" {{project_id $project_id} return_url}]
 
+    if { "" == $amount_reimbursable_converted } {set amount_reimbursable_converted 0}
     set amount_reimbursable_converted_sum [expr $amount_reimbursable_converted_sum + $amount_reimbursable_converted]
 }
 
