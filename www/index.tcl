@@ -481,6 +481,8 @@ set left_navbar_html "
 "
 
 
+append admin_links [im_menu_ul_list -no_uls 1 "expenses" {}]
+
 if {"" != $admin_links} {
     append left_navbar_html "
          <hr/>
