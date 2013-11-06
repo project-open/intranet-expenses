@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="intranet-expenses" package_version="3.4.0.7.0" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="intranet-expenses" locale="en_US" charset="ISO-8859-1">
 
   <msg key="--Select--">-- Select --</msg>
   <msg key="Add_a_new_Expense">Add a new Expense</msg>
@@ -9,11 +9,15 @@
   <msg key="Airfare">Airfare</msg>
   <msg key="All">All</msg>
   <msg key="Amount">Amount</msg>
+  <msg key="Assign_Expenses_to_a_Project">Assign expenses to a project</msg>
+  <msg key="Assign_Expenses_to_Projects">Assign expenses to projects</msg>
+  <msg key="Assign_to_a_project_help">Assign to a project</msg>
   <msg key="Billable">Abrechenbar</msg>
   <msg key="Billable_p">Billable ?</msg>
   <msg key="Bundle_Items">Bundle Items</msg>
   <msg key="Cash">Cash</msg>
   <msg key="Copies">Copies</msg>
+  <msg key="create_bundle_help">Create Bundle</msg>
   <msg key="Create_Invoice">Create Expense Invoice</msg>
   <msg key="create_invoice_help">'Expense Invoices' are confirmed collection that can be associated with a project.</msg>
   <msg key="create_trabel_cost_help">Create trabel cost invoices</msg>
