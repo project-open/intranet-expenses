@@ -22,7 +22,6 @@ ad_page_contract {
     { user_id_from_search "" }
 }
 
-
 # ---------------------------------------------------------------
 # Defaults & Security
 # ---------------------------------------------------------------
@@ -80,7 +79,7 @@ set expense_type_id_default $expense_type_id
 set multiple_expense_items_enabled_p [parameter::get_from_package_key -package_key "intranet-expenses" -parameter EnableMultipleExpenseItemsP -default 1] 
 
 if {"" == $start_date} { set start_date [parameter::get_from_package_key -package_key "intranet-cost" -parameter DefaultStartDate -default "2000-01-01"] }
-if {"" == $end_date} { set end_date [parameter::get_from_package_key -package_key "intranet-cost" -parameter DefaultEndDate -default "2100-01-01"] }
+if {"" == $end_date} { set end_date [clock format [clock seconds] -format {%Y-%m-%d}] }
 
 # Check that Start & End-Date have correct format
 if {"" != $start_date && ![regexp {[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]} $start_date]} {
@@ -298,7 +297,7 @@ db_multirow -extend {expense_chk project_url expense_new_url provider_url} expen
   where
 	c.cost_id = e.expense_id and 
 	c.effective_date >= to_date(:start_date, 'YYYY-MM-DD') and
-	c.effective_date < to_date(:end_date, 'YYYY-MM-DD')
+	c.effective_date <= to_date(:end_date, 'YYYY-MM-DD')
 	$unassigned_sql
 	$personal_only_sql
 	$project_where
@@ -484,13 +483,17 @@ append left_navbar_html "
 	<tr>
 	  <td class=form-label>[_ intranet-core.Start_Date]</td>
 	  <td class=form-widget>
-	    <input type=textfield name=start_date value='$start_date'>
+	    <nobr><input type='textfield' name='start_date' id='start_date' value='$start_date' size='10'> 
+		<input type=\"button\" style=\"height:23px; width:23px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('start_date', 'y-m-d');\" ></nobr>
 	  </td>
 	</tr>
 	<tr>
 	  <td class=form-label>[_ intranet-core.End_Date]</td>
 	  <td class=form-widget>
-	    <input type=textfield name=end_date value='$end_date'>
+       	    <nobr>
+	        <input type='textfield' name='end_date' id='end_date' value='$end_date' size='10'>
+		<input type=\"button\" style=\"height:23px; width:23px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('end_date', 'y-m-d');\" >
+	    </nobr>
 	  </td>
 	</tr>
 
