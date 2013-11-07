@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-expenses" locale="en_US" charset="ISO-8859-1">
 
+  <msg key="--_Select_--">-- Select --</msg>
   <msg key="--Select--">-- Select --</msg>
   <msg key="Add_a_new_Expense">Add a new Expense</msg>
   <msg key="Add_a_new_Expense_Item">New Expense Item</msg>
@@ -11,12 +12,16 @@
   <msg key="Amount">Amount</msg>
   <msg key="Assign_Expenses_to_a_Project">Assign expenses to a project</msg>
   <msg key="Assign_Expenses_to_Projects">Assign expenses to projects</msg>
+  <msg key="Assign_to_a_project">Assign to a project</msg>
   <msg key="Assign_to_a_project_help">Assign to a project</msg>
   <msg key="Billable">Abrechenbar</msg>
   <msg key="Billable_p">Billable ?</msg>
   <msg key="Bundle_Items">Bundle Items</msg>
   <msg key="Cash">Cash</msg>
+  <msg key="Company_Visa_1">Company Visa 1</msg>
+  <msg key="Company_Visa_2">Company Visa 2</msg>
   <msg key="Copies">Copies</msg>
+  <msg key="Create_Bundle">Create Bundle</msg>
   <msg key="create_bundle_help">Create Bundle</msg>
   <msg key="Create_Invoice">Create Expense Invoice</msg>
   <msg key="create_invoice_help">'Expense Invoices' are confirmed collection that can be associated with a project.</msg>
@@ -25,9 +30,12 @@
   <msg key="Currency">Currency</msg>
   <msg key="Delete">Delete</msg>
   <msg key="Delete_Expenses">Delete Expenses</msg>
+  <msg key="Expense_Bundle">Expense Bundle</msg>
   <msg key="Expense_Bundles">Expense Bundles</msg>
   <msg key="Expense_Date">Expense Date</msg>
+  <msg key="Expense_Invoices">Expense Invoices</msg>
   <msg key="Expense_Payment_Type">Payment</msg>
+  <msg key="Expense_Report">Expense Report</msg>
   <msg key="Expense_Type">Expense Type</msg>
   <msg key="Expenses">Expenses</msg>
   <msg key="Expenses_Items">Expenses</msg>
@@ -38,16 +46,20 @@
   <msg key="Fuel">Fuel</msg>
   <msg key="Hotel">Hotel</msg>
   <msg key="ID">ID</msg>
+  <msg key="Included_Expenses">Included Expenses</msg>
   <msg key="Invoice">Invoice</msg>
   <msg key="Invoice_Items">Travel Costs</msg>
   <msg key="Km_own_car">Km own car</msg>
   <msg key="lt_--_Select_--intranet-">-- Select --</msg>
   <msg key="lt_PayPal_tigerpondtiger">PayPal Tigerpond</msg>
   <msg key="Meals">Meals</msg>
+  <msg key="Modify_Included_Expenses">Modify Included Expenses</msg>
   <msg key="Name">Name</msg>
+  <msg key="Negative_amount_not_allowed">Negative amounts not allowed</msg>
   <msg key="New_Expense">New Expense</msg>
   <msg key="New_Expense_Items">New Expense Items
 </msg>
+  <msg key="No">No</msg>
   <msg key="Nointranet-coreNo">No</msg>
   <msg key="Note">Note</msg>
   <msg key="Office_Material">Office Material</msg>
@@ -77,5 +89,6 @@
   <msg key="Vat">MwSt.</msg>
   <msg key="Vat_Included">VAT % Incl.</msg>
   <msg key="Without_Project">Without Project</msg>
+  <msg key="Yes">Yes</msg>
   <msg key="Yesintranet-coreYes">Yes</msg>
 </message_catalog>
