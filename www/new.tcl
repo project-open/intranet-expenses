@@ -117,8 +117,9 @@ set currency_options [im_currency_options -currency_list $expense_currencies $in
 set expense_type_options [list]
 set expense_type_sql "select expense_type, expense_type_id from im_expense_type"
 db_foreach expense_types $expense_type_sql {
-       set expense_type [lang::message::lookup "" "intranet-expenses.$expense_type" "$expense_type"]
-       set expense_type_options [linsert $expense_type_options 0 [list $expense_type $expense_type_id]]
+    set expense_type_key [string map {" " "_"} $expense_type]
+    set expense_type [lang::message::lookup "" "intranet-core.$expense_type_key" $expense_type]
+    set expense_type_options [linsert $expense_type_options 0 [list $expense_type $expense_type_id]]
 }
 
 set expense_type_options [linsert $expense_type_options 0 [list [lang::message::lookup "" "intranet-expenses.--Select--" "-- Please Select --"] 0]]
