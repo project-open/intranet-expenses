@@ -234,8 +234,9 @@ template::list::create \
 	    link_url_eval $project_url
 	    orderby project_name
 	}
-	note {
-	    label "[lang::message::lookup {} intranet-expenses.Note {Note}]"
+	expense_bundle_nr {
+	    label "[lang::message::lookup {} intranet-expenses.Bundle Bundle]"
+	    link_url_eval $expense_bundle_url
 	}
     } \
     -filters {
@@ -245,6 +246,13 @@ template::list::create \
 	expense_type_id {}
 	unassigned {}
     }
+
+set ttt {
+	note {
+	    label "[lang::message::lookup {} intranet-expenses.Note {Note}]"
+	}
+}
+
 
 set project_where ""
 if {"" != $project_id & 0 != $project_id} { 
@@ -280,7 +288,7 @@ switch $unassigned {
 }
 
 
-db_multirow -extend {expense_chk project_url expense_new_url provider_url} expense_lines expenses_lines "
+db_multirow -extend {expense_chk project_url expense_new_url expense_bundle_url provider_url} expense_lines expenses_lines "
   select
 	c.*,
 	e.*,
@@ -288,7 +296,8 @@ db_multirow -extend {expense_chk project_url expense_new_url provider_url} expen
 	to_char(effective_date, :date_format) as effective_date,
 	im_category_from_id(expense_type_id) as expense_type,
 	im_category_from_id(expense_payment_type_id) as expense_payment_type,
-	p.project_name
+	p.project_name,
+	(select bun.cost_name from im_costs bun where bun.cost_id = e.bundle_id) as expense_bundle_nr
   from
 	im_costs c
 	LEFT OUTER JOIN im_projects p on (c.project_id = p.project_id),
@@ -315,8 +324,8 @@ db_multirow -extend {expense_chk project_url expense_new_url provider_url} expen
     set expense_new_url [export_vars -base "/intranet-expenses/new" {expense_id return_url}]
     set provider_url [export_vars -base "/intranet/users/view" {{user_id $provider_id} return_url}]
     set project_url [export_vars -base "/intranet/projects/view" {{project_id $project_id} return_url}]
+    set expense_bundle_url [export_vars -base "/intranet-expenses/bundle-new" {{form_mode display} bundle_id return_url}]
 }
-
 
 # ----------------------------------------------
 # bundles part
