@@ -443,7 +443,7 @@ db_multirow -extend {bundle_chk project_url owner_url bundle_url} bundle_lines b
 set bind_vars [ns_set create]
 ns_set put $bind_vars project_id $project_id
 ns_set put $bind_vars user_id_from_search $user_id_from_search
-set project_menu_id [util_memoize [list db_string parent_menu "select menu_id from im_menus where label='project'" -default 0]]
+set project_menu_id [im_menu_id_from_label "project"]
 
 set sub_navbar [im_sub_navbar \
     -components \
