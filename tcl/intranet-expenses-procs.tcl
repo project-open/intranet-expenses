@@ -23,7 +23,7 @@ ad_proc -public im_expense_payment_type_paypal {} { return 4102 }
 ad_proc -public im_package_expenses_id {} {
     Returns the package id of the intranet-expenses module
 } {
-    return [util_memoize "im_package_expenses_id_helper"]
+    return [util_memoize im_package_expenses_id_helper]
 }
 
 ad_proc -private im_package_expenses_id_helper {} {
