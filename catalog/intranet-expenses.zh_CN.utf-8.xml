@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="intranet-expenses" package_version="3.4.0.7.0" locale="zh_CN" charset="utf-8">
+<message_catalog package_key="intranet-expenses" locale="zh_CN" charset="utf-8">
 
   <msg key="--Select--">-- 选择 --</msg>
   <msg key="Add_a_new_Expense">添加一个新费用</msg>
