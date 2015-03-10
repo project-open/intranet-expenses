@@ -60,7 +60,7 @@ foreach id $bundle_id {
 	"
 
 	# Audit the deletion
-	im_audit -object_type im_expense_bundle -action after_delete -object_id $id
+	im_audit -object_type im_expense_bundle -action before_nuke -object_id $id
 
 	db_string del_expense_bundle {}
 
