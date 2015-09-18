@@ -117,7 +117,7 @@ e.bundle_id = :bundle_id and e.billable_p = 't'"]%></td>
         db_foreach expense_lines $expense_lines_sql {
             append table "<tr class=roweven>\n"
             append table "<td>[lc_time_fmt $effective_date %x]</td>\n"
-            append table "<td>$expense_type</td>\n"
+            append table "<td>[im_category_from_id -translate_p 1 -package_key intranet-core -empty_default $expense_type $expense_type_id]</td>\n"
             append table "<td>[lc_numeric $amount_formatted {} [lang::user::locale] ]&nbsp;$default_currency</td>\n"
             append table "<td>$vat_code</td>\n"
             append table "<td>$note</td>\n"
