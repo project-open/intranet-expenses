@@ -303,6 +303,14 @@ ad_form -extend -name $form_id -on_request {
 		c.cost_id = e.expense_id
 		and c.cost_id = :expense_id
 
+} -validate {
+
+    # Check if VAT is integer (Data format is currently hard-coded (see: $percent_format)) 
+    { vat
+	{[string is integer $vat]}
+         "\"VAT\" must be an integer value"
+    }
+
 } -new_data {
 
     if { $expense_type_id == 0 } {
