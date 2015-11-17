@@ -64,7 +64,7 @@ ad_proc im_expense_bundle_item_sum {
     Sums up a list of expense items.
     Returns a hash array with the resulting amount sum etc.
 } {
-    set current_user_id [ad_get_user_id]
+    set current_user_id [ad_conn user_id]
     set add_hours_all_p [im_permission $current_user_id "add_hours_all"]
     if {"" == $user_id_from_search || !$add_hours_all_p} { set user_id_from_search $current_user_id }
 
