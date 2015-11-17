@@ -54,11 +54,11 @@ set date_format [im_l10n_sql_date_format]
 set percent_format "FM999"
 set action_url "/intranet-expenses/new-multiple-2"
 
-set default_currency [ad_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
+set default_currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
 
 # Should we calculate VAT automatically from the expense type?
-set auto_vat_p [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
-set auto_vat_function [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
+set auto_vat_p [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
+set auto_vat_function [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
 
 # Redirect if the type of the object hasn't been defined and
 # if there are DynFields specific for subtypes.
@@ -143,7 +143,7 @@ if {![info exists reimbursable]} { set reimbursable 100 }
 if {![info exists expense_date]} { set expense_date $today }
 if {![info exists billable_p]} { set billable_p "f" }
 if {![info exists expense_payment_type_id]} { set expense_payment_type_id [im_expense_payment_type_cash] }
-if {![info exists currency]} { set currency [ad_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] }
+if {![info exists currency]} { set currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] }
 
 # ---------------------------------------------------------------
 # 

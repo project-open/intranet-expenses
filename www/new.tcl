@@ -57,8 +57,8 @@ set percent_format "FM999"
 set action_url "/intranet-expenses/new"
 
 # Should we calculate VAT automatically from the expense type?
-set auto_vat_p [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
-set auto_vat_function [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
+set auto_vat_p [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
+set auto_vat_function [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
 
 # Check the format of the expense date
 if {[info exists expense_date] && ![regexp {^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]$} $expense_date]} {
@@ -158,7 +158,7 @@ if {![info exists expense_payment_type_id]} {
 }
 
 if {![info exists currency]} { 
-    set currency [ad_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] 
+    set currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] 
 }
 
 

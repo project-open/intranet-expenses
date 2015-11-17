@@ -74,7 +74,7 @@ ad_proc im_expense_bundle_item_sum {
     set common_customer_id 0
     set common_provider_id 0
     set common_currrency ""
-    set default_currency [ad_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
+    set default_currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
 
     set expense_sql "
 	select	c.*,

@@ -55,12 +55,12 @@ if {"" != $user_id_from_search && $current_user_id != $user_id_from_search} {
     append page_title [lang::message::lookup "" intranet-expenses.for_user_id_from_search "for '%user_name_from_search%'"]
 }
 set context_bar [im_context_bar $page_title]
-set default_currency [ad_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
+set default_currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
 set percent_format "FM999"
 
 # Should we calculate VAT automatically from the expense type?
-set auto_vat_p [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
-set auto_vat_function [ad_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
+set auto_vat_p [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeP" "" 0]
+set auto_vat_function [im_parameter -package_id [im_package_expenses_id] "CalculateVATPerExpenseTypeFunction" "" "im_expense_calculate_vat_from_expense_type"]
 
 
 # ------------------------------------------------------------------

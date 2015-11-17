@@ -107,7 +107,7 @@ if {0 != $render_template_id} {
 
     if {1 == $render_template_id} { 
 	# special template - the default template
-	set template_from_param [ad_parameter -package_id [im_package_expenses_id] DefaultExpenseTemplate "" ""]
+	set template_from_param [im_parameter -package_id [im_package_expenses_id] DefaultExpenseTemplate "" ""]
 	if {"" == $template_from_param} {
 	    # Use the default template that comes as part of the module
 	    set template_body "default.adp"
@@ -115,11 +115,11 @@ if {0 != $render_template_id} {
 	} else {
 	    # Use the user's template in the template path
 	    set template_body $template_from_param
-	    set template_path [ad_parameter -package_id [im_package_invoices_id] InvoiceTemplatePathUnix "" "/tmp/templates/"]
+	    set template_path [im_parameter -package_id [im_package_invoices_id] InvoiceTemplatePathUnix "" "/tmp/templates/"]
 	}
     } else {
 	set template_body [im_category_from_id $render_template_id]
-	set template_path [ad_parameter -package_id [im_package_invoices_id] InvoiceTemplatePathUnix "" "/tmp/templates/"]
+	set template_path [im_parameter -package_id [im_package_invoices_id] InvoiceTemplatePathUnix "" "/tmp/templates/"]
     }
 
     append template_path "/$template_body"
