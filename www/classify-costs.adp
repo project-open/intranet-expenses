@@ -11,7 +11,7 @@
 
 
 <form method=get action='classify-costs-2'>
-<%= [export_form_vars return_url] %>
+<%= [export_vars -form {return_url}] %>
 
 @expense_ids_html;noquote@
 

@@ -462,7 +462,7 @@ set left_navbar_html "
             #intranet-expenses.Filter_Expenses#
          </div>
 	<form method=POST action='index'>
-	[export_form_vars orderby]
+	[export_vars -form {orderby}]
 	<table>
 	<tr>
 	    <td class=form-label>[lang::message::lookup "" intranet-expenses.Unassigned_items "Unassigned:"]</td>
