@@ -126,7 +126,7 @@ set action_list [list]
 set bulk_action_list [list]
 
 if {$add_expense_p} {
-    append admin_links "<li><a href=\"new?[export_url_vars project_id user_id_from_search return_url]\">[lang::message::lookup "" intranet-expenses.Add_a_new_Expense_Item "Add new Expense Item"]</a></li>\n"
+    append admin_links "<li><a href=\"new?[export_vars -url { project_id user_id_from_search return_url}]\">[lang::message::lookup "" intranet-expenses.Add_a_new_Expense_Item "Add new Expense Item"]</a></li>\n"
     # lappend action_list [lang::message::lookup "" intranet-expenses.Add_one_new_Expense_Item "Add one new Expense Item"]
     # lappend action_list [export_vars -base "/intranet-expenses/new" {return_url user_id_from_search project_id}]
     # lappend action_list [lang::message::lookup "" intranet-expenses.Add_one_new_Expense_Item "Add one new Expense Item"]
