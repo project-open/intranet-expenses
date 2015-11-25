@@ -21,7 +21,7 @@ ad_page_contract {
 # Default & Security
 # ------------------------------------------------------------------
 
-set current_user_id [ad_maybe_redirect_for_registration]
+set current_user_id [auth::require_login]
 if {![im_permission $current_user_id "add_expense_bundle"]} {
     ad_return_complaint 1 "[_ intranet-timesheet2-invoices.lt_You_have_insufficient_1]"
     return
@@ -128,7 +128,7 @@ db_multirow -extend {expense_chk project_url expense_new_url provider_url} expen
    order by
 	c.effective_date DESC
 " {
-    set amount "[format %.2f [expr $amount * [expr 1 + [expr $vat / 100]]]] $currency"
+    set amount "[format %.2f [expr $amount * [expr 1 + [expr {$vat / 100}]]]] $currency"
     set vat "[format %.1f $vat] %"
     set reimbursable "[format %.1f $reimbursable] %"
     set expense_new_url [export_vars -base "/intranet-expenses/new" {expense_id return_url}]

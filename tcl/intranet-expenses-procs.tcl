@@ -91,11 +91,11 @@ ad_proc im_expense_bundle_item_sum {
 	# amount_converted can be NULL if exchange rates are not defined
 	if {"" == $amount_converted} { set amount_converted 0 }
 
-	set amount_before_vat [expr $amount_before_vat + $amount_converted]
-	set total_amount [expr $total_amount + [expr $amount_converted * [expr 1 + [expr $vat / 100.0]]]]
+	set amount_before_vat [expr {$amount_before_vat + $amount_converted}]
+	set total_amount [expr $total_amount + [expr $amount_converted * [expr 1 + [expr {$vat / 100.0}]]]]
 
-	if {0 == $common_project_id & $project_id != ""} { set common_project_id $project_id }
-	if {0 != $common_project_id & $project_id != "" & $common_project_id != $project_id} {
+	if {0 == $common_project_id & $project_id ne ""} { set common_project_id $project_id }
+	if {0 != $common_project_id & $project_id ne "" & $common_project_id != $project_id} {
 	    ad_return_complaint 1 [lang::message::lookup "" intranet-expenses.Muliple_projects "
 		You can't include expense items from several project in one expense bundle:<br>
 		Name of the violating item: '$external_company_name (ID=#$cost_id)'
@@ -103,16 +103,16 @@ ad_proc im_expense_bundle_item_sum {
 	    ad_script_abort
 	}
 
-	if {0 == $common_customer_id & $customer_id != ""} { set common_customer_id $customer_id }
-	if {0 != $common_customer_id & $customer_id != "" & $common_customer_id != $customer_id} {
+	if {0 == $common_customer_id & $customer_id ne ""} { set common_customer_id $customer_id }
+	if {0 != $common_customer_id & $customer_id ne "" & $common_customer_id != $customer_id} {
 	    ad_return_complaint 1 [lang::message::lookup "" intranet-expenses.Muliple_customers "
 		You can't include expense items from several 'customer' in one expense bundle.
 	    "]
 	    ad_script_abort
 	}
 
-	if {0 == $common_provider_id & $provider_id != ""} { set common_provider_id $provider_id }
-	if {0 != $common_provider_id & $provider_id != "" & $common_provider_id != $provider_id} {
+	if {0 == $common_provider_id & $provider_id ne ""} { set common_provider_id $provider_id }
+	if {0 != $common_provider_id & $provider_id ne "" & $common_provider_id != $provider_id} {
 	    ad_return_complaint 1 [lang::message::lookup "" intranet-expenses.Muliple_projects "
 		You can't include expense items from several 'providers' (people reporting the expense) 
 		in one expense bundle.
@@ -123,7 +123,7 @@ ad_proc im_expense_bundle_item_sum {
 
     set bundle_vat 0
     catch {
-	set bundle_vat [expr [expr [expr $total_amount - $amount_before_vat] / $amount_before_vat] * 100.0]
+	set bundle_vat [expr [expr {[expr {$total_amount - $amount_before_vat}] / $amount_before_vat}] * 100.0]
     }
 
 #    if {0 == $common_project_id} {
@@ -140,7 +140,7 @@ ad_proc im_expense_bundle_item_sum {
     set common_project_nr [db_string project_nr "select project_nr from im_projects where project_id = :common_project_id" -default ""]
     set common_project_name [db_string project_nr "select project_name from im_projects where project_id = :common_project_id" -default ""]
     
-    set total_amount_rounded [expr round($total_amount*100) / 100]
+    set total_amount_rounded [expr {round($total_amount*100) / 100}]
     set cost_name [lang::message::lookup "" intranet-expenses.Expense_Bundle "Expense Bundle"]
     set cost_name "$cost_name - $default_currency $total_amount_rounded in $common_project_name"
     
@@ -219,7 +219,7 @@ ad_proc im_expense_bundle_new_page_wf_perm_modify_included_expenses {
 } {
     set perm_table [im_expense_bundle_new_page_wf_perm_table]
     set perm_set [im_workflow_object_permissions -object_id $bundle_id -perm_table $perm_table]
-    return [expr [lsearch $perm_set "w"] > -1]
+    return [expr {[lsearch $perm_set "w"] > -1}]
 }
 ad_proc im_expense_bundle_new_page_wf_perm_edit_button {
     -bundle_id:required
@@ -228,7 +228,7 @@ ad_proc im_expense_bundle_new_page_wf_perm_edit_button {
 } {
     set perm_table [im_expense_bundle_new_page_wf_perm_table]
     set perm_set [im_workflow_object_permissions -object_id $bundle_id -perm_table $perm_table]
-    return [expr [lsearch $perm_set "a"] > -1]
+    return [expr {[lsearch $perm_set "a"] > -1}]
 }
 
 ad_proc im_expense_bundle_new_page_wf_perm_delete_button {
@@ -240,7 +240,7 @@ ad_proc im_expense_bundle_new_page_wf_perm_delete_button {
 } {
     set perm_table [im_expense_bundle_new_page_wf_perm_table]
     set perm_set [im_workflow_object_permissions -object_id $bundle_id -perm_table $perm_table]
-    return [expr [lsearch $perm_set "d"] > -1]
+    return [expr {[lsearch $perm_set "d"] > -1}]
 }
 
 

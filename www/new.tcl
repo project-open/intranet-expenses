@@ -31,7 +31,7 @@ ad_page_contract {
 # Default & Security
 # ------------------------------------------------------------------
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set current_user_id $user_id
 if {![im_permission $user_id "add_expenses"]} {
     ad_return_complaint 1 "[_ intranet-timesheet2-invoices.lt_You_have_insufficient_1]"
@@ -266,14 +266,14 @@ if {[info exists expense_amount] && $expense_amount < 0} {
 }
 
 #    check conditions
-#    if {![empty_string_p $vat]} {
+#    if {$vat ne ""} {
 #        if {0>$vat || 100<$vat} {
 #            template::element::set_error $form_id vat "[_ intranet-expenses.vat_not_valid]"
 #            incr n_errors
 #        }
 #    }
 
-#    if {![empty_string_p $reimbursable]} {
+#    if {$reimbursable ne ""} {
 #        if {0>$reimbursable || 100<$reimbursable} {
 #            template::element::set_error $form_id reimbursable "[_ intranet-expenses.reimbursable_not_valid]"
 #            incr n_errors
@@ -321,7 +321,7 @@ ad_form -extend -name $form_id -on_request {
     }
 
     if {![info exists vat] || "" == $vat} { set vat 0 }
-    set amount [expr $expense_amount / [expr 1 + [expr $vat / 100.0]]]
+    set amount [expr $expense_amount / [expr 1 + [expr {$vat / 100.0}]]]
     set expense_name $expense_id
 
     # Get the user's department as default CC
@@ -347,7 +347,7 @@ ad_form -extend -name $form_id -on_request {
     # saved absence values.
     if {$auto_vat_p} { 
 	set vat [$auto_vat_function -expense_id $expense_id] 
-	set amount [expr $expense_amount / [expr 1 + [expr $vat / 100.0]]]
+	set amount [expr $expense_amount / [expr 1 + [expr {$vat / 100.0}]]]
 	db_dml update_cost_vat "
 		update	im_costs set
 			vat = :vat,
@@ -368,7 +368,7 @@ ad_form -extend -name $form_id -on_request {
     }
 
     if {![info exists vat] || "" == $vat} { set vat 0 }
-    set amount [expr $expense_amount / [expr 1 + [expr $vat / 100.0]]]
+    set amount [expr $expense_amount / [expr 1 + [expr {$vat / 100.0}]]]
     set expense_name $expense_id
 
     # Update the cost and invoice items
@@ -386,7 +386,7 @@ ad_form -extend -name $form_id -on_request {
     # saved absence values.
     if {$auto_vat_p} {
 	set vat [$auto_vat_function -expense_id $expense_id] 
-	set amount [expr $expense_amount / [expr 1 + [expr $vat / 100.0]]]
+	set amount [expr $expense_amount / [expr 1 + [expr {$vat / 100.0}]]]
 	db_dml update_cost_vat "
 		update	im_costs set
 			vat = :vat,

@@ -35,7 +35,7 @@ ad_page_contract {
 # Default & Security
 # ------------------------------------------------------------------
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set current_user_id $user_id
 if {![im_permission $user_id "add_expenses"]} {
     ad_return_complaint 1 "[_ intranet-timesheet2-invoices.lt_You_have_insufficient_1]"
@@ -162,7 +162,7 @@ for {set i 0} {$i < 20} {incr i} {
 	}
 
 	if {"" == $item_expense_amount} {
-	    ad_return_complaint 1 "Found empty 'amount' in line [expr $i+1]."
+	    ad_return_complaint 1 "Found empty 'amount' in line [expr {$i+1}]."
 	    ad_script_abort
 	}
 
@@ -283,7 +283,7 @@ db_transaction {
 	    # Get the user's department as default CC
 	    set cost_center_id [db_string user_cc "select department_id from im_employees where employee_id = :user_id" -default ""]
 	    # Choose a name for the expense without incrementing the object pointer
-	    set item_expense_name [expr [db_string expname "select t_acs_object_id_seq.last_value"] +1]
+	    set item_expense_name [expr {[db_string expname "select t_acs_object_id_seq.last_value"] +1}]
 	    
 	    set expense_id [db_string create_expense "
 			select im_expense__new (
@@ -322,7 +322,7 @@ db_transaction {
 		set item_vat [$auto_vat_function -expense_id $expense_id] 
 	    }
 	    
-	    set item_amount [expr $item_expense_amount / [expr 1 + [expr $item_vat / 100.0]]]
+	    set item_amount [expr $item_expense_amount / [expr 1 + [expr {$item_vat / 100.0}]]]
 
 	    db_dml update_costs "
 			update im_costs set

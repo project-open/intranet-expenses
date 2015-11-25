@@ -1,10 +1,10 @@
 <master>
-<property name="title">@page_title@</property>
-<property name="context">@context_bar@</property>
-<property name="main_navbar_label">@main_navbar_label@</property>
-<property name="sub_navbar">@sub_navbar;noquote@</property>
-<property name="left_navbar">@left_navbar_html;noquote@</property>
-<property name="show_context_help">@show_context_help_p;noquote@</property>
+<property name="doc(title)">@page_title;literal@</property>
+<property name="context">@context_bar;literal@</property>
+<property name="main_navbar_label">@main_navbar_label;literal@</property>
+<property name="sub_navbar">@sub_navbar;literal@</property>
+<property name="left_navbar">@left_navbar_html;literal@</property>
+<property name="show_context_help">@show_context_help_p;literal@</property>
 
 <%= [im_box_header $page_title] %>
 <listtemplate name="@list_id@"></listtemplate>

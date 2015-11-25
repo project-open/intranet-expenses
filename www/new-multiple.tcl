@@ -25,7 +25,7 @@ ad_page_contract {
 # Default & Security
 # ------------------------------------------------------------------
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set current_user_id $user_id
 if {![im_permission $user_id "add_expenses"]} {
     ad_return_complaint 1 "[_ intranet-timesheet2-invoices.lt_You_have_insufficient_1]"
@@ -174,7 +174,7 @@ for {set i 0} {$i < 20} {incr i} {
 
     append form_html "
 	<tr>
-	<td>[expr $i+1]</td>
+	<td>[expr {$i+1}]</td>
 	<td>[im_select -ad_form_option_list_style_p 1 -translate_p 0 project_id.$i $project_options $project_id]</td>
 	<td><input type=input name=expense_amount.$i size=8></td>
 	<td>[im_select -ad_form_option_list_style_p 1 -translate_p 1 currency.$i $currency_options $default_currency]</td>

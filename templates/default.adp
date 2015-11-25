@@ -5,7 +5,7 @@
 <head>
 <title><%=[lang::message::lookup "" intranet-core.Expense_Bundle "Expense Bundle"]%></title>
 <link rel='stylesheet' href='/intranet/style/invoice.css' type='text/css'>
-<link rel=StyleSheet type=text/css href="/intranet/style/style.saltnpepper.css">
+<link rel=StyleSheet type="text/css" href="/intranet/style/style.saltnpepper.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <body text="#000000">

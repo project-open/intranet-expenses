@@ -1,6 +1,6 @@
 <master>
-<property name="title">@page_title@</property>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="doc(title)">@page_title;literal@</property>
+<property name="context_bar">@context_bar;literal@</property>
 <property name="main_navbar_label">expenses</property>
 
 <h2>@page_title@</h2>
@@ -12,7 +12,7 @@
 <form action=new-multiple-2 method=POST>
 <%= [export_vars -form {user_id_from_search return_url}] %>
 <table>
-<tr class=rowtitle align=center>
+<tr class=rowtitle align="center">
 <td class=rowtitle>#intranet-core.No#</td>
 <td class=rowtitle>#intranet-expenses.Project#</td>
 <td class=rowtitle>#intranet-expenses.Amount#</td>
@@ -31,7 +31,7 @@
 @form_html;noquote@
 <tr>
 <td></td>
-<td colspan=9><input type=submit name=#intranet-core.Submit#></td>
+<td colspan="9"><input type="submit" name="#intranet-core.Submit#"></td>
 </tr>
 </table>
 </form>

@@ -29,7 +29,7 @@ if {![info exists panel_p]} {
     }
 }
 
-set current_user_id [ad_maybe_redirect_for_registration]
+set current_user_id [auth::require_login]
 set user_id $current_user_id
 set page_title [lang::message::lookup "" intranet-expenses.Expense_Bundle "Expense Bundle"]
 set context_bar [im_context_bar $page_title]
@@ -55,7 +55,7 @@ set owner_p 0
 set owner_id 0
 if {[info exists bundle_id]} {
     set owner_id [db_string owner "select creation_user from acs_objects where object_id = :bundle_id" -default 0]
-    set owner_p [expr $owner_id == $current_user_id]
+    set owner_p [expr {$owner_id == $current_user_id}]
 }
 
 if {$printer_friendly_p} { set enable_master_p 0 }
@@ -452,16 +452,16 @@ db_multirow -extend {project_url expense_new_url provider_url} expense_lines exp
     }
 
     if { [info exists curr_hash($provider_id,$curr_idx) ] } {
-        set curr_hash($provider_id,$curr_idx) [expr $curr_hash($provider_id,$curr_idx) + $amount_reimbursable]
+        set curr_hash($provider_id,$curr_idx) [expr {$curr_hash($provider_id,$curr_idx) + $amount_reimbursable}]
     } else {
         set curr_hash($provider_id,$curr_idx) $amount_reimbursable
     }
     # -- end summary currencies
     
-    set amount "[format %.2f [expr $amount * [expr 1 + [expr $vat / 100]]]] $currency"
+    set amount "[format %.2f [expr $amount * [expr 1 + [expr {$vat / 100}]]]] $currency"
     set vat "[format %.1f $vat] %"
     set reimbursable "[format %.1f $reimbursable] %"
-    if {![exists_and_not_null bundle_id]} {
+    if {(![info exists bundle_id] || $bundle_id eq "")} {
 	set expense_chk "<input type=\"checkbox\" 
 				name=\"expense_id\" 
 				value=\"$expense_id\" 
@@ -472,7 +472,7 @@ db_multirow -extend {project_url expense_new_url provider_url} expense_lines exp
     set project_url [export_vars -base "/intranet/projects/view" {{project_id $project_id} return_url}]
 
     if { "" == $amount_reimbursable_converted } {set amount_reimbursable_converted 0}
-    set amount_reimbursable_converted_sum [expr $amount_reimbursable_converted_sum + $amount_reimbursable_converted]
+    set amount_reimbursable_converted_sum [expr {$amount_reimbursable_converted_sum + $amount_reimbursable_converted}]
 }
 
 set reimbursement_output_table "<br><hr width='640px'><br><table cellpadding='3px' cellspacing='3px' border='0'><tr><td colspan='2'><h2>Reimbursement Employee/Currency<h2></td></tr>"
@@ -483,12 +483,12 @@ foreach key [array names curr_hash] {
     if {$bak_key == $key} {
         set employee_id ""
     } else {
-	set employee_id [string range $key 0 [expr [string first "," $key]-1]]
+	set employee_id [string range $key 0 [string first "," $key]-1]
     }
     set employee_name [im_name_from_user_id $employee_id]
     set reimburse_amount $curr_hash($key)
     if { ".00" != $reimburse_amount } {
-        append reimbursement_output_table "<tr><td>$employee_name</td><td align='right'>[lindex $currency_list [string range $key [expr [string first "," $key]+1] [string length $key]]]&nbsp;$reimburse_amount</td></tr><br>"
+        append reimbursement_output_table "<tr><td>$employee_name</td><td align='right'>[lindex $currency_list [string range $key [string first "," $key]+1 [string length $key]]]&nbsp;$reimburse_amount</td></tr><br>"
     }
     set bak_key $key
 }

@@ -29,7 +29,7 @@ ad_page_contract {
 set show_context_help_p 0
 
 # User id already verified by filters
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set current_user_id $user_id
 set page_focus "im_header_form.keywords"
 set date_format "YYYY-MM-DD"
@@ -126,7 +126,7 @@ set action_list [list]
 set bulk_action_list [list]
 
 if {$add_expense_p} {
-    append admin_links "<li><a href=\"new?[export_vars -url { project_id user_id_from_search return_url}]\">[lang::message::lookup "" intranet-expenses.Add_a_new_Expense_Item "Add new Expense Item"]</a></li>\n"
+    append admin_links "<li><a href=\"[export_vars -base new { project_id user_id_from_search return_url}]\">[lang::message::lookup "" intranet-expenses.Add_a_new_Expense_Item "Add new Expense Item"]</a></li>\n"
     # lappend action_list [lang::message::lookup "" intranet-expenses.Add_one_new_Expense_Item "Add one new Expense Item"]
     # lappend action_list [export_vars -base "/intranet-expenses/new" {return_url user_id_from_search project_id}]
     # lappend action_list [lang::message::lookup "" intranet-expenses.Add_one_new_Expense_Item "Add one new Expense Item"]
@@ -312,10 +312,10 @@ db_multirow -extend {expense_chk project_url expense_new_url expense_bundle_url 
 	$expense_where
   [template::list::orderby_clause -name $list_id -orderby]
 " {
-    set amount "[format %.2f [expr $amount * [expr 1 + [expr $vat / 100]]]] $currency"
+    set amount "[format %.2f [expr $amount * [expr 1 + [expr {$vat / 100}]]]] $currency"
     set vat "[format %.1f $vat] %"
     set reimbursable "[format %.1f $reimbursable] %"
-    if {![exists_and_not_null bundle_id]} {
+    if {(![info exists bundle_id] || $bundle_id eq "")} {
 	set expense_chk "<input type=\"checkbox\" 
 				name=\"expense_id\" 
 				value=\"$expense_id\" 
@@ -415,7 +415,7 @@ db_multirow -extend {bundle_chk project_url owner_url bundle_url} bundle_lines b
 		$project_where
 		$personal_only_sql
 " {
-    set amount "[format %.2f [expr $amount * [expr 1 + [expr $vat / 100]]]] $currency"
+    set amount "[format %.2f [expr $amount * [expr 1 + [expr {$vat / 100}]]]] $currency"
     set vat "[format %.1f $vat] %"
     if {$delete_bundle_p || $owner_id == $current_user_id} {
         set bundle_chk "<input type=\"checkbox\" 

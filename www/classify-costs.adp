@@ -1,6 +1,6 @@
 <master>
-<property name="title">@page_title@</property>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="doc(title)">@page_title;literal@</property>
+<property name="context_bar">@context_bar;literal@</property>
 <property name="main_navbar_label">projects</property>
 
 <h2>@page_title@</h2>
@@ -17,7 +17,7 @@
 
 <table>
 <tr>
-    <td colspan='2' class=rowtitle align=center>
+    <td colspan='2' class=rowtitle align="center">
       <%= [lang::message::lookup "" intranet-expenses.Assign_Expenses_to_a_Project "Assign Expenses to a Project"] %>
     </td>
 </tr>
@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td class=form-label></td>
-    <td class=form-widget><input type=submit></td>
+    <td class=form-widget><input type="submit"></td>
 </tr>
 </table>
 </form>

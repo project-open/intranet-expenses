@@ -1,6 +1,6 @@
 <if @enable_master_p@>
 <master>
-<property name="title">@page_title@</property>
+<property name="doc(title)">@page_title;literal@</property>
 <property name="main_navbar_label">timesheet</property>
 </if>
 

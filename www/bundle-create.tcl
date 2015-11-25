@@ -27,7 +27,7 @@ ad_page_contract {
 if {![info exists expense_id]} { ad_returnredirect $return_url }
 
 # User id already verified by filters
-set current_user_id [ad_maybe_redirect_for_registration]
+set current_user_id [auth::require_login]
 set add_expense_bundles_p [im_permission $current_user_id "add_expense_bundle"]
 
 # Check permissions to log hours for other users
