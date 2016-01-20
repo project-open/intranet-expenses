@@ -459,7 +459,7 @@ if {0 == $org_project_id || "" == $org_project_id} {
 set left_navbar_html "
       <div class='filter-block'>
          <div class='filter-title'>
-            #intranet-expenses.Filter_Expenses#
+            [_ intranet-expenses.Filter_Expenses]
          </div>
 	<form method=POST action='index'>
 	[export_vars -form {orderby}]
@@ -520,7 +520,7 @@ if {"" != $admin_links} {
          <hr/>
          <div class='filter-block'>
             <div class='filter-title'>
-       	       #intranet-core.Admin_Links#
+       	       [_ intranet-core.Admin_Links]
             </div>
             <ul>
                $admin_links
