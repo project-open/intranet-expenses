@@ -283,7 +283,7 @@ db_transaction {
 	    # Get the user's department as default CC
 	    set cost_center_id [db_string user_cc "select department_id from im_employees where employee_id = :user_id" -default ""]
 	    # Choose a name for the expense without incrementing the object pointer
-	    set item_expense_name [expr {[db_string expname "select t_acs_object_id_seq.last_value"] +1}]
+	    set item_expense_name [expr {[db_string expname "select nextval('t_acs_object_id_seq')"] +1}]
 	    
 	    set expense_id [db_string create_expense "
 			select im_expense__new (
