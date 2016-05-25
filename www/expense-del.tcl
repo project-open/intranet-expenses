@@ -34,16 +34,10 @@ foreach id $expense_id {
     # Audit the action
     im_audit -object_type im_expense -action before_nuke -object_id $id
 
-
     # delete expense
-    # 
     db_transaction {
 	db_string del_expense {}
     }
-    
-    # fraber 150310: There is no after_delete!!!
-    # im_audit -object_type im_expense -action after_delete -object_id $id
-
 }
 
 ad_returnredirect $return_url
