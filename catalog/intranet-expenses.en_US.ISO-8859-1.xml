@@ -16,6 +16,7 @@
   <msg key="Assign_to_a_project_help">Assign to a project</msg>
   <msg key="Billable">Abrechenbar</msg>
   <msg key="Billable_p">Billable ?</msg>
+  <msg key="Bundle">Bundle</msg>
   <msg key="Bundle_Items">Bundle Items</msg>
   <msg key="Cash">Cash</msg>
   <msg key="Company_Visa_1">Company Visa 1</msg>
@@ -24,7 +25,7 @@
   <msg key="Create_Bundle">Create Bundle</msg>
   <msg key="create_bundle_help">Create Bundle</msg>
   <msg key="Create_Invoice">Create Expense Invoice</msg>
-  <msg key="create_invoice_help">'Expense Invoices' are confirmed collection that can be associated with a project.</msg>
+  <msg key="create_invoice_help">&#39;Expense Invoices&#39; are confirmed collection that can be associated with a project.</msg>
   <msg key="create_trabel_cost_help">Create trabel cost invoices</msg>
   <msg key="Create_Travel_Cost">Create Travel Cost</msg>
   <msg key="Currency">Currency</msg>
