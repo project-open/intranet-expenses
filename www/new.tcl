@@ -133,8 +133,8 @@ set expense_payment_type_options [db_list_of_lists expense_payment_type "
 "]
 set expense_payment_type_options [linsert $expense_payment_type_options 0 [list [lang::message::lookup "" "intranet-expenses.--Select--" "-- Please Select --"] 0]]
 
-
-
+set err_msg_payment_type [lang::message::lookup "" intranet-expenses.Expense_Payment_Type_Is_Mandatory "Please provide a Payment Type"]
+set err_msg_vat [lang::message::lookup "" intranet-expenses.Expense_VAT_Must_Be_Integer "\"VAT\" must be an integer value"]
 
 # ------------------------------------------------------------------
 # Form defaults
@@ -308,7 +308,11 @@ ad_form -extend -name $form_id -on_request {
     # Check if VAT is integer (Data format is currently hard-coded (see: $percent_format)) 
     { vat
 	{[string is integer $vat]}
-         "\"VAT\" must be an integer value"
+	"$err_msg_vat"
+    }
+    { expense_payment_type_id
+        { 0 != $expense_payment_type_id }
+	"$err_msg_payment_type"
     }
 
 } -new_data {
