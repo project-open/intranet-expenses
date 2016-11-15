@@ -13,6 +13,7 @@
         <owner url="mailto:frank.bergmann@project-open.com">Frank Bergmann</owner>
         <summary>Expenses and Invoices system</summary>
         <vendor url="http://www.project-open.com">]project-open[</vendor>
+        <release-date>2016-11-15</release-date>
         <description format="text/html">Scenario: An employee or freelancer travels for the company to perform some task (visit a customer, ...)</description>
 
         <provides url="intranet-expenses" version="3.4.0.2.0"/>
