@@ -5,7 +5,7 @@
   <msg key="Add_a_new_Expense">Ajouter une nouvelle Note de Frais</msg>
   <msg key="Add_a_new_Expense_Item">Nouveau poste de frais</msg>
   <msg key="Add_one_new_Expense_Item">Nouveau poste de frais</msg>
-  <msg key="Airfare">Billet d'avion</msg>
+  <msg key="Airfare">Billet d&#39;avion</msg>
   <msg key="All">Tout</msg>
   <msg key="Amount">Montant</msg>
   <msg key="Billable">Facturables</msg>
@@ -13,7 +13,7 @@
   <msg key="Cash">Liquide</msg>
   <msg key="Copies">Copies</msg>
   <msg key="Create_Invoice">Créer une Note de Frais</msg>
-  <msg key="create_invoice_help">Les &quot;Notes de Frais&quot; peuvent être associées à un projet.</msg>
+  <msg key="create_invoice_help">Les &#34;Notes de Frais&#34; peuvent être associées à un projet.</msg>
   <msg key="create_trabel_cost_help">Créer des factures de déplacement</msg>
   <msg key="Create_Travel_Cost">Créer une Note de Déplacement</msg>
   <msg key="Currency">Monnaie</msg>

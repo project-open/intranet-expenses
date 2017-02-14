@@ -5,7 +5,7 @@
   <msg key="Amount">Miktar</msg>
   <msg key="Billable_p">faturalandırılabilir ?</msg>
   <msg key="Create_Invoice">Masraf faturası Oluştur</msg>
-  <msg key="create_invoice_help">onaylanan ve proje ile ilgili 'masraf faturaları'</msg>
+  <msg key="create_invoice_help">onaylanan ve proje ile ilgili &#39;masraf faturaları&#39;</msg>
   <msg key="create_trabel_cost_help">Seyahat masrafı faturası oluştur</msg>
   <msg key="Create_Travel_Cost">Seyahat maliyeti Oluştur</msg>
   <msg key="Currency">Kur</msg>

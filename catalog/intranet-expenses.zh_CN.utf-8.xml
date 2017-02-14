@@ -15,7 +15,7 @@
   <msg key="Cash">现金</msg>
   <msg key="Copies">打印费</msg>
   <msg key="Create_Invoice">创建费用发票</msg>
-  <msg key="create_invoice_help">'费用发票' 被用来确认关联项目的费用</msg>
+  <msg key="create_invoice_help">&#39;费用发票&#39; 被用来确认关联项目的费用</msg>
   <msg key="create_trabel_cost_help">创建差旅成本发票</msg>
   <msg key="Create_Travel_Cost">创建差旅成本</msg>
   <msg key="Currency">货币</msg>

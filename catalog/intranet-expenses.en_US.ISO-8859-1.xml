@@ -39,6 +39,7 @@
   <msg key="Expense_Report">Expense Report</msg>
   <msg key="Expense_Type">Expense Type</msg>
   <msg key="Expenses">Expenses</msg>
+  <msg key="Expenses_Dashboard">Expenses Dashboard</msg>
   <msg key="Expenses_Items">Expenses</msg>
   <msg key="Expenses_List">Expenses List</msg>
   <msg key="External_company_name">External Company Name</msg>
@@ -58,8 +59,10 @@
   <msg key="Name">Name</msg>
   <msg key="Negative_amount_not_allowed">Negative amounts not allowed</msg>
   <msg key="New_Expense">New Expense</msg>
+  <msg key="New_Expense_Item">New Expense Item</msg>
   <msg key="New_Expense_Items">New Expense Items
 </msg>
+  <msg key="New_Multiple_Expense_Item">New Multiple Expense Item</msg>
   <msg key="No">No</msg>
   <msg key="Nointranet-coreNo">No</msg>
   <msg key="Note">Note</msg>

@@ -15,7 +15,7 @@
   <msg key="Cash">Kas/contant</msg>
   <msg key="Copies">Kopieën</msg>
   <msg key="Create_Invoice">Maak onkostenrekening</msg>
-  <msg key="create_invoice_help">'Onkostenrekeningen' mogen bij het project opgenomen worden.</msg>
+  <msg key="create_invoice_help">&#39;Onkostenrekeningen&#39; mogen bij het project opgenomen worden.</msg>
   <msg key="create_trabel_cost_help">Maak tabel kostenfacturen</msg>
   <msg key="Create_Travel_Cost">Maak reiskosten</msg>
   <msg key="Currency">Munteenheid</msg>

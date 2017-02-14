@@ -15,7 +15,7 @@
   <msg key="Cash">Contanti</msg>
   <msg key="Copies">Copie</msg>
   <msg key="Create_Invoice">Crea fattura per la spesa</msg>
-  <msg key="create_invoice_help">Le 'fatture per spese' sono riscossioni confermate che possono essere associate a un progetto</msg>
+  <msg key="create_invoice_help">Le &#39;fatture per spese&#39; sono riscossioni confermate che possono essere associate a un progetto</msg>
   <msg key="create_trabel_cost_help">Crea fatture per spese di viaggio</msg>
   <msg key="Create_Travel_Cost">Crea spesa di viaggio</msg>
   <msg key="Currency">Valuta</msg>
@@ -29,8 +29,8 @@
   <msg key="Expenses">Spese</msg>
   <msg key="Expenses_Items">Spese</msg>
   <msg key="Expenses_List">Elenco spese</msg>
-  <msg key="External_company_name">Nome dell'azienda esterna</msg>
-  <msg key="External_Company_VatNr">P. IVA dell'azienda esterna</msg>
+  <msg key="External_company_name">Nome dell&#39;azienda esterna</msg>
+  <msg key="External_Company_VatNr">P. IVA dell&#39;azienda esterna</msg>
   <msg key="Filter_Expenses">Filtra spese</msg>
   <msg key="Fuel">Carburante</msg>
   <msg key="Hotel">Hotel</msg>
@@ -57,7 +57,7 @@
   <msg key="reibursable">% rimborsabile</msg>
   <msg key="reimbursable">%% rimborsabile</msg>
   <msg key="Remove_checked_items">Elimina elementi selezionati</msg>
-  <msg key="Request_Expense_Bundle_Help">Un gruppo di spese è un insieme di elementi di spesa da inviare al PM o all'ufficio risorse umane.</msg>
+  <msg key="Request_Expense_Bundle_Help">Un gruppo di spese è un insieme di elementi di spesa da inviare al PM o all&#39;ufficio risorse umane.</msg>
   <msg key="Status">Stato</msg>
   <msg key="Submitter">Mittente</msg>
   <msg key="Taxi">Taxi</msg>

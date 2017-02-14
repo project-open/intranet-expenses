@@ -15,7 +15,7 @@
   <msg key="Cash">Efectivo</msg>
   <msg key="Copies">Copias</msg>
   <msg key="Create_Invoice">Crear Factura de Gastos</msg>
-  <msg key="create_invoice_help">'Facturas de Gastos' son grupos de gastos confirmados que pueden ser assiciados con un proyecto.</msg>
+  <msg key="create_invoice_help">&#39;Facturas de Gastos&#39; son grupos de gastos confirmados que pueden ser assiciados con un proyecto.</msg>
   <msg key="create_trabel_cost_help">Crear facturas por gastos de viaje</msg>
   <msg key="Create_Travel_Cost">Crear gasto de viaje</msg>
   <msg key="Currency">Moneda</msg>
