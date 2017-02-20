@@ -279,7 +279,7 @@ if {!$view_expenses_all_p} {
 }
 
 # Check the case that a privileged user has selected a "log-for" user
-if {$view_expenses_all_p && "" != $current_user_id_from_search && $current_user_id != $user_id_from_search} {
+if {$view_expenses_all_p && "" != $user_id_from_search && $current_user_id != $user_id_from_search} {
     set personal_only_sql "and provider_id = $user_id_from_search" 
 }
 
