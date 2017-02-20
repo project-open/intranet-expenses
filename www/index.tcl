@@ -116,9 +116,9 @@ set ttt {
 # Admin Links
 # ---------------------------------------------------------------
 
-set add_expense_p [im_permission $user_id "add_expenses"]
-set create_bundle_p [im_permission $user_id "add_expense_bundle"]
-set view_expenses_all_p [im_permission $user_id "view_expenses_all"]
+set add_expense_p [im_permission $current_user_id "add_expenses"]
+set create_bundle_p [im_permission $current_user_id "add_expense_bundle"]
+set view_expenses_all_p [im_permission $current_user_id "view_expenses_all"]
 
 
 set admin_links ""
@@ -273,9 +273,15 @@ if {"" != $expense_type_id  & 0 != $expense_type_id} {
 
 # Allow accounting guys to see all expense items,
 # not just their own ones...
-set personal_only_sql "and provider_id = :user_id"
-if {$view_expenses_all_p} { set personal_only_sql "" }
+set personal_only_sql ""
+if {!$view_expenses_all_p} { 
+    set personal_only_sql "and provider_id = :user_id" 
+}
 
+# Check the case that a privileged user has selected a "log-for" user
+if {$view_expenses_all_p && "" != $current_user_id_from_search && $current_user_id != $user_id_from_search} {
+    set personal_only_sql "and provider_id = $user_id_from_search" 
+}
 
 switch $unassigned {
     "todo" { set unassigned_sql "and (c.project_id is null OR e.bundle_id is null)" }
@@ -333,7 +339,7 @@ db_multirow -extend {expense_chk project_url expense_new_url expense_bundle_url 
 
 set list2_id "bundles_list"
 
-set delete_bundle_p [im_permission $user_id "add_expense_bundle"]
+set delete_bundle_p [im_permission $current_user_id "add_expense_bundle"]
 set bulk2_action_list [list]
 
 # Unconditionally allow to "Delete".
