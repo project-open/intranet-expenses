@@ -152,14 +152,9 @@ set tax "0"
 if {![info exists reimbursable]} { set reimbursable 100 }
 if {![info exists expense_date]} { set expense_date $today }
 if {![info exists billable_p]} { set billable_p "f" }
-
-if {![info exists expense_payment_type_id]} { 
-    set expense_payment_type_id [im_expense_payment_type_cash]
-}
-
-if {![info exists currency]} { 
-    set currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] 
-}
+if {![info exists vat ]} { set vat 0 }
+if {![info exists expense_payment_type_id]} { set expense_payment_type_id [im_expense_payment_type_cash] }
+if {![info exists currency]} { set currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"] }
 
 
 
