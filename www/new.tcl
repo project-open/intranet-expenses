@@ -217,11 +217,14 @@ ad_form \
 	}
     }
 
-if {!$auto_vat_p} {
+if {$auto_vat_p} {
+    ad_form -extend -name $form_id -form { {vat:text(hidden)} }
+} else {
     ad_form -extend -name $form_id -form {
 	{vat:text(text) {label "[_ intranet-expenses.Vat_Included]"} {html {size 6}}}
     }
 }
+
 
 ad_form -extend -name $form_id -form {
 	{expense_date:text(text) {label "[_ intranet-expenses.Expense_Date]"} {html {size 10}}}
