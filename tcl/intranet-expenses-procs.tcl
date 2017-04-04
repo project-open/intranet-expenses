@@ -236,8 +236,14 @@ ad_proc im_expense_bundle_new_page_wf_perm_delete_button {
 } {
     Should we show the "Delete" button in the ExpenseBundleNewPage?
     Only the owner himself is allowed to delete a bundle, while it
-    is in status "Requrested" or "Rejected".
+    is in status "Requested" or "Rejected".
+    Admins can do everything - as always.
 } {
+    # 2017-04-03: Admins need to delete bundles always, right?
+    set current_user_id [auth::require_login]
+    set user_admin_p [im_is_user_site_wide_or_intranet_admin $current_user_id]
+    if {$user_admin_p} { return 1 }
+
     set perm_table [im_expense_bundle_new_page_wf_perm_table]
     set perm_set [im_workflow_object_permissions -object_id $bundle_id -perm_table $perm_table]
     return [expr {[lsearch $perm_set "d"] > -1}]
