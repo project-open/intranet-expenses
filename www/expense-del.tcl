@@ -29,15 +29,29 @@ set user_id [auth::require_login]
 set current_user_id $user_id
 set user_admin_p [im_is_user_site_wide_or_intranet_admin $current_user_id]
 
+set debug_html ""
 foreach id $expense_id {
-    
-    # Audit the action
-    im_audit -object_type im_expense -action before_nuke -object_id $id
+    set view_p 0
+    set read_p 0
+    set write_p 0
+    set admin_p 0
 
-    # delete expense
-    db_transaction {
-	db_string del_expense {}
+    im_expense_permissions $current_user_id $id view_p read_p write_p admin_p
+    if {$write_p} {
+	# Audit the action
+	im_audit -object_type im_expense -action before_nuke -object_id $id
+
+	# delete expense
+	db_transaction {
+	    db_string del_expense {}
+	}
+    } else {
+	append debug_html "<li>You don't have permissions to delete expense item #$id"
     }
 }
 
-ad_returnredirect $return_url
+if {"" ne $debug_html} {
+    ad_return_complaint 1 "<b>Deleting Expenses</b>:<br><ul>$debug_html</ul>"
+} else {
+    ad_returnredirect $return_url
+}

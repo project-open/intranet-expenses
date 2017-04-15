@@ -40,10 +40,26 @@ set percent_format "FM999"
 # List of expense_ids
 # ---------------------------------------------------------------
 
+set debug_html ""
 set expense_ids_html ""
 foreach id $expense_id {
     append expense_ids_html "<input type=hidden name=expense_ids value=$id>\n"
+
+    set view_p 0
+    set read_p 0
+    set write_p 0
+    set admin_p 0
+    im_expense_permissions $current_user_id $id view_p read_p write_p admin_p
+    if {!$write_p} {
+	append debug_html "<li>You don't have permissions to modify expense item #$id"
+    }
 }
+
+if {"" ne $debug_html} {
+    ad_return_complaint 1 "<b>Classifying Expense Items</b>:<br><ul>$debug_html</ul>"
+    ad_script_abort
+}
+
 
 
 # ---------------------------------------------------------------

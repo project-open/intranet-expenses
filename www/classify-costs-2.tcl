@@ -42,6 +42,30 @@ if {!$add_expense_bundles_p} {
 lappend epense_ids 0
 
 
+
+
+# ---------------------------------------------------------------
+# Check security
+# ---------------------------------------------------------------
+
+set debug_html ""
+foreach id $expense_ids {
+    set view_p 0
+    set read_p 0
+    set write_p 0
+    set admin_p 0
+    im_expense_permissions $current_user_id $id view_p read_p write_p admin_p
+    if {!$write_p} {
+	append debug_html "<li>You don't have permissions to modify expense item #$id"
+    }
+}
+if {"" ne $debug_html} {
+    ad_return_complaint 1 "<b>Classifying Expenses</b>:<br><ul>$debug_html</ul>"
+    ad_script_abort
+}
+
+
+
 # ---------------------------------------------------------------
 # assign items to project
 # ---------------------------------------------------------------

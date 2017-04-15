@@ -52,6 +52,37 @@ ad_proc -public im_expense_bundle_permissions {user_id bundle_id view_var read_v
     im_cost_permissions $user_id $bundle_id view read write admin
 }
 
+
+ad_proc -public im_expense_permissions {user_id expense_id view_var read_var write_var admin_var} {
+    Fill the "by-reference" variables read, write and admin
+    with the permissions of $user_id on $expense_id.<br>
+    Basically, users can only see and modify their own expenses.
+} {
+    upvar $view_var view
+    upvar $read_var read
+    upvar $write_var write
+    upvar $admin_var admin
+
+    set user_admin_p [im_is_user_site_wide_or_intranet_admin $user_id]
+
+    # Get expense information
+    set provider_id [util_memoize [list db_string expense_info "select provider_id from	im_costs where cost_id=$expense_id" -default 0] 3600]
+
+    if {$user_admin_p || ($user_id eq $provider_id)} {
+	set view_p 1
+	set read_p 1
+	set write_p 1
+	set admin_p 1
+    } else {
+	set view_p 0
+	set read_p 0
+	set write_p 0
+	set admin_p 0
+    }
+
+}
+
+
 # ----------------------------------------------------------------------
 # Sum up multiple Expense Items for a single Bundle
 # ----------------------------------------------------------------------
@@ -221,6 +252,7 @@ ad_proc im_expense_bundle_new_page_wf_perm_modify_included_expenses {
     set perm_set [im_workflow_object_permissions -object_id $bundle_id -perm_table $perm_table]
     return [expr {[lsearch $perm_set "w"] > -1}]
 }
+
 ad_proc im_expense_bundle_new_page_wf_perm_edit_button {
     -bundle_id:required
 } {

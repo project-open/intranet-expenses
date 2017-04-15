@@ -19,6 +19,7 @@ ad_page_contract {
     { user_id_from_search "" }
 }
 
+
 # ---------------------------------------------------------------
 # Defaults & Security
 # ---------------------------------------------------------------
@@ -41,12 +42,34 @@ if {"" == $user_id_from_search || !$add_hours_all_p} { set user_id_from_search $
 #    ad_script_abort
 # }
 
-# Add a "0" expense to avoid syntax error if the list was empty.
-lappend epense_id 0
+
+# ---------------------------------------------------------------
+# Check security
+# ---------------------------------------------------------------
+
+set debug_html ""
+foreach id $expense_id {
+    set view_p 0
+    set read_p 0
+    set write_p 0
+    set admin_p 0
+    im_expense_permissions $current_user_id $id view_p read_p write_p admin_p
+    if {!$write_p} {
+	append debug_html "<li>You don't have permissions to bundle expense item #$id"
+    }
+}
+if {"" ne $debug_html} {
+    ad_return_complaint 1 "<b>Creating Expense Bundles</b>:<br><ul>$debug_html</ul>"
+    ad_script_abort
+}
+
 
 # ---------------------------------------------------------------
 # Sum up the expenses
 # ---------------------------------------------------------------
+
+# Add a "0" expense to avoid syntax error if the list was empty.
+lappend expense_id 0
 
 array set hash [im_expense_bundle_item_sum -user_id_from_search $user_id_from_search -expense_ids $expense_id]
 
