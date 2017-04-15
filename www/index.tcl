@@ -36,6 +36,7 @@ set date_format "YYYY-MM-DD"
 set cur_format [im_l10n_sql_currency_format]
 set return_url [im_url_with_query]
 set current_url [ns_conn url]
+set user_admin_p [im_is_user_site_wide_or_intranet_admin $user_id]
 
 # Check permissions to log hours for other users
 # We use the hour logging permissions also for expenses...
@@ -264,8 +265,7 @@ if {"" != $expense_type_id  & 0 != $expense_type_id} {
     set expense_where "\tand e.expense_type_id = :expense_type_id\n" 
 }
 
-# Allow accounting guys to see all expense items,
-# not just their own ones...
+# Allow accounting guys to see all expense items, not just their own ones...
 set personal_only_sql ""
 if {!$view_expenses_all_p} { 
     set personal_only_sql "and provider_id = :user_id" 

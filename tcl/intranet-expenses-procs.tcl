@@ -63,6 +63,9 @@ ad_proc -public im_expense_permissions {user_id expense_id view_var read_var wri
     upvar $write_var write
     upvar $admin_var admin
 
+    set add_expense_p [im_permission $user_id "add_expenses"]
+    set create_bundle_p [im_permission $user_id "add_expense_bundle"]
+    set view_expenses_all_p [im_permission $user_id "view_expenses_all"]
     set user_admin_p [im_is_user_site_wide_or_intranet_admin $user_id]
 
     # Get expense information
@@ -80,6 +83,10 @@ ad_proc -public im_expense_permissions {user_id expense_id view_var read_var wri
 	set admin_p 0
     }
 
+    if {$view_expenses_all_p} {
+	set view_p 1
+	set read_p 1
+    }
 }
 
 
