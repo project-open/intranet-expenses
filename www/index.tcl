@@ -491,7 +491,7 @@ append left_navbar_html "
 	  <td class=form-label>[_ intranet-core.Start_Date]</td>
 	  <td class=form-widget>
 	    <nobr><input type='textfield' name='start_date' id='start_date' value='$start_date' size='10'> 
-		<input type=\"button\" style=\"height:23px; width:23px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('start_date', 'y-m-d');\" ></nobr>
+		<input type=\"button\" style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('start_date', 'y-m-d');\" ></nobr>
 	  </td>
 	</tr>
 	<tr>
@@ -499,7 +499,7 @@ append left_navbar_html "
 	  <td class=form-widget>
        	    <nobr>
 	        <input type='textfield' name='end_date' id='end_date' value='$end_date' size='10'>
-		<input type=\"button\" style=\"height:23px; width:23px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('end_date', 'y-m-d');\" >
+		<input type=\"button\" style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('end_date', 'y-m-d');\" >
 	    </nobr>
 	  </td>
 	</tr>
