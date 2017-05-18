@@ -58,10 +58,10 @@ ad_proc -public im_expense_permissions {user_id expense_id view_var read_var wri
     with the permissions of $user_id on $expense_id.<br>
     Basically, users can only see and modify their own expenses.
 } {
-    upvar $view_var view
-    upvar $read_var read
-    upvar $write_var write
-    upvar $admin_var admin
+    upvar $view_var view_p
+    upvar $read_var read_p
+    upvar $write_var write_p
+    upvar $admin_var admin_p
 
     set add_expense_p [im_permission $user_id "add_expenses"]
     set create_bundle_p [im_permission $user_id "add_expense_bundle"]
