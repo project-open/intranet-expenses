@@ -58,7 +58,9 @@
   <msg key="Name">Name</msg>
   <msg key="Negative_amount_not_allowed">Negative Beträge sind nicht erlaubt</msg>
   <msg key="New_Expense">Neue Kosten</msg>
+  <msg key="New_Expense_Item">Neue Ausgabe</msg>
   <msg key="New_Expense_Items">Neues Ausgabenelement</msg>
+  <msg key="New_Multiple_Expense_Item">Neue Ausgaben</msg>
   <msg key="No">Nein</msg>
   <msg key="Nointranet-coreNo">Nein</msg>
   <msg key="Note">Hinweiß</msg>
