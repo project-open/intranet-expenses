@@ -77,7 +77,7 @@
   <msg key="Remove_checked_items">Entferne geprüfte Objekte</msg>
   <msg key="Request_Expense_Bundle_Help">Ein Ausgabenpaket ist eine Anzahl von Ausgabenelementen, die gemeinsam von einem Vorgesetzten oder der Personalabteilung bestätigt werden.</msg>
   <msg key="Status">Status</msg>
-  <msg key="Submitter">Submitter</msg>
+  <msg key="Submitter">Von</msg>
   <msg key="Taxi">Taxi</msg>
   <msg key="Telephone">Telefon</msg>
   <msg key="ToDo">ToDo</msg>
