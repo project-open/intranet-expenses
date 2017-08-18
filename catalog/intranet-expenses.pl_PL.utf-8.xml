@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="intranet-expenses" locale="pl_PL" charset="utf-8">
+
+  <msg key="Add_a_new_Expense_Item">Nowy Element Wydatków</msg>
+  <msg key="Add_multiple_new_Expense_Items">Wiele Nowych Wydatków</msg>
+  <msg key="Add_one_new_Expense_Item">Nowy Wydatek</msg>
+  <msg key="Airfare">Loty</msg>
+  <msg key="All">Wszystkie</msg>
+  <msg key="Amount">Ilość</msg>
+  <msg key="Billable_p">Rozliczony?</msg>
+  <msg key="Bundle_Items">Zestawów Wydatków</msg>
+  <msg key="Copies">Kopia</msg>
+  <msg key="Delete">Usuń</msg>
+  <msg key="Expense_Bundles">Zestawy Wydatków</msg>
+  <msg key="Expense_Date">Data Wydatków</msg>
+  <msg key="Expense_Payment_Type">Płatność</msg>
+  <msg key="Expense_Type">Typ Wydatku</msg>
+  <msg key="Expenses_Items">Wydatków</msg>
+  <msg key="Expenses_List">Lista Wydatków</msg>
+  <msg key="External_company_name">Nazwa Zewnętrznej Firmy</msg>
+  <msg key="Filter_Expenses">Filtr Wydatków</msg>
+  <msg key="Fuel">Paliwo</msg>
+  <msg key="Hotel">Hotel</msg>
+  <msg key="Km_own_car">Km przejechane własnym samochodem</msg>
+  <msg key="Meals">Posiłki</msg>
+  <msg key="Name">Nazwa</msg>
+  <msg key="Note">Uwagi</msg>
+  <msg key="Office_Material">Materiały Biurowe</msg>
+  <msg key="Other">Inne</msg>
+  <msg key="Owner">Właściciel</msg>
+  <msg key="Parking">Parking</msg>
+  <msg key="Project">Projekt</msg>
+  <msg key="Project_Name">Nazwa Projektu</msg>
+  <msg key="Receipt_reference">Paragon</msg>
+  <msg key="reimbursable">Zwracany %%</msg>
+  <msg key="Status">Status</msg>
+  <msg key="Submitter">Nadesłał</msg>
+  <msg key="Taxi">Taxi</msg>
+  <msg key="Telephone">Telefon</msg>
+  <msg key="ToDo">Do Zrobienia</msg>
+  <msg key="Tolls">Opłaty</msg>
+  <msg key="Train">Pociąg</msg>
+  <msg key="Unassigned_items">Elementy Nieprzypisane</msg>
+  <msg key="Unbundeled">Uwolnione</msg>
+  <msg key="Vat_Included">VAT % Incl.</msg>
+  <msg key="Without_Project">Bez Projektu</msg>
+</message_catalog>
