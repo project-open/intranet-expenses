@@ -36,8 +36,10 @@
   <msg key="Expense_Date">Expense Date</msg>
   <msg key="Expense_Invoices">Expense Invoices</msg>
   <msg key="Expense_Payment_Type">Payment</msg>
+  <msg key="Expense_Payment_Type_Is_Mandatory">Expense Payment Type Is Mandatory</msg>
   <msg key="Expense_Report">Expense Report</msg>
   <msg key="Expense_Type">Expense Type</msg>
+  <msg key="Expense_VAT_Must_Be_Integer">Expense VAT Must Be Integer</msg>
   <msg key="Expenses">Expenses</msg>
   <msg key="Expenses_Dashboard">Expenses Dashboard</msg>
   <msg key="Expenses_Items">Expenses</msg>
