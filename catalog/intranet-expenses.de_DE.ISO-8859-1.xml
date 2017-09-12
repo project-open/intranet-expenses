@@ -36,9 +36,12 @@
   <msg key="Expense_Date">Datum</msg>
   <msg key="Expense_Invoices">Kostenrechnungen</msg>
   <msg key="Expense_Payment_Type">Zahlungs-Typ</msg>
+  <msg key="Expense_Payment_Type_Is_Mandatory">Ausgaben Zahlungstyp ist verpflichtend</msg>
   <msg key="Expense_Report">Ausgabenbericht</msg>
   <msg key="Expense_Type">Ausgabe-Typ</msg>
+  <msg key="Expense_VAT_Must_Be_Integer">Ausgaben MwSt. muss eine Zahl sein.</msg>
   <msg key="Expenses">Ausgaben</msg>
+  <msg key="Expenses_Dashboard">Ausgaben-Dashboard</msg>
   <msg key="Expenses_Items">Ausgabenelement(e)</msg>
   <msg key="Expenses_List">Ausgaben</msg>
   <msg key="External_company_name">Externer Firmenname</msg>
