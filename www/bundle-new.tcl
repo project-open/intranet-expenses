@@ -389,6 +389,11 @@ template::list::create \
 	    display_template { <nobr>@expense_lines.amount;noquote@</nobr> }
 	    link_url_eval $expense_new_url
 	}
+	provider_name {
+	    label "[lang::message::lookup {} intranet-expenses.Submitter Submitter]"
+	    link_url_eval $provider_url
+	    display_template { <nobr>@expense_lines.provider_name;noquote@</nobr> }
+	}
 	vat {
 	    label "[lang::message::lookup {} intranet-expenses.Vat VAT]"
 	}
