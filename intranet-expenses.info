@@ -32,6 +32,9 @@
 	    <parameter datatype="number"  min_n_values="1"  max_n_values="1" name="EnabledInvoiceCannedNoteP"  default="0" description="Should we enabled canned notes on financial documents? Nice feature, but adds some extra complexity..."/>
 	    <parameter datatype="number"  min_n_values="1"  max_n_values="1" name="ShowInvoiceOurProjectNrFirstColumnP"  default="1" description="Show our &quot;Project Nr.&quot; field in the very first column of the invoice? This has now (V3.3) become the default."/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="ExpenseCurrencies"  description="The list of currencies to be used in Expense Management. Some customers want to limit the currencies here to simplify expense management. Example: 'EUR CHF USD' - this would limit the expense currencies to the subset of these three currencies and the system's active currencies. Default is empty to disable this feature."/>
+
+	    <parameter datatype="number" min_n_values="1" max_n_values="1" name="CheckExpenseBundleCommonProviderP"  default="0" description="Should the expense bundle creation screen check that all expense bundles are from the same 'provider' (=user)? Default is 1, assuming that each user will bundle and submit his expenses himself. However, in case of a central admin team, it might be useful to create bundles with travel items from multiple employees."/>
+
         </parameters>
 
     </version>

@@ -112,7 +112,8 @@ ad_proc im_expense_bundle_item_sum {
     set common_customer_id 0
     set common_provider_id 0
     set common_currency ""
-    set default_currency [im_parameter -package_id [im_package_cost_id] "DefaultCurrency" "" "EUR"]
+    set default_currency [parameter::get_from_package_key -package_key "intranet-cost" -parameter "DefaultCurrency" -default "EUR"]
+    set check_common_provider_p [parameter::get_from_package_key -package_key "intranet-expenses" -parameter "CheckExpenseBundleCommonProviderP" -default "1"]
 
     set expense_sql "
 	select	c.*,
@@ -150,7 +151,7 @@ ad_proc im_expense_bundle_item_sum {
 	}
 
 	if {0 == $common_provider_id & $provider_id ne ""} { set common_provider_id $provider_id }
-	if {0 != $common_provider_id & $provider_id ne "" & $common_provider_id != $provider_id} {
+	if {$check_common_provider_p && 0 != $common_provider_id & $provider_id ne "" & $common_provider_id != $provider_id} {
 	    ad_return_complaint 1 [lang::message::lookup "" intranet-expenses.Muliple_projects "
 		You can't include expense items from several 'providers' (people reporting the expense) 
 		in one expense bundle.
