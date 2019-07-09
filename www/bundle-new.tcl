@@ -38,6 +38,9 @@ set context_bar [im_context_bar $page_title]
 set user_locale [lang::user::locale]
 set locale $user_locale
 
+set bgcolor(0) "class=invoiceroweven"
+set bgcolor(1) "class=invoicerowodd"
+
 
 if {![info exists enable_master_p]} { set enable_master_p 1}
 if {![info exists form_mode]} { set form_mode "edit" }
@@ -498,6 +501,92 @@ foreach key [array names curr_hash] {
     set bak_key $key
 }
 append reimbursement_output_table "</table><br><br><br>"
+
+
+
+
+
+
+# ---------------------------------------------------------------
+# Payments list
+# ---------------------------------------------------------------
+
+
+set cost_id $bundle_id
+im_cost_permissions $current_user_id $cost_id view_p read_p write_p admin_p
+
+# set user_is_admin_p [im_is_user_site_wide_or_intranet_admin $current_user_id]
+# set write_p [expr [im_profile::member_p -profile "Accounting" -user_id $current_user_id] || $user_is_admin_p]
+
+set payment_list_html "
+	<form action=/intranet-invoices/payment-action method=post>
+	[export_vars -form {cost_id return_url}]
+	<table border=0 cellPadding=1 cellspacing=1>
+        <tr>
+          <td align=middle class=rowtitle colspan=3>
+	    [lang::message::lookup $user_locale intranet-invoices.Related_Payments]
+	  </td>
+        </tr>"
+
+set payment_list_sql "
+	select	p.*,
+	        to_char(p.received_date,'YYYY-MM-DD') as received_date_pretty,
+		im_category_from_id(p.payment_type_id) as payment_type
+	from	im_payments p
+	where	p.cost_id = :cost_id
+"
+
+set payment_ctr 0
+db_foreach payment_list $payment_list_sql {
+    append payment_list_html "
+        <tr $bgcolor([expr {$payment_ctr % 2}])>
+          <td>
+	    <A href=/intranet-payments/view?payment_id=$payment_id>
+	      $received_date_pretty
+ 	    </A>
+	  </td>
+          <td>
+	      $amount $currency
+          </td>\n"
+    if {$write_p} {
+	append payment_list_html "
+            <td>
+	      <input type=checkbox name=payment_id value=$payment_id>
+            </td>\n"
+    }
+    append payment_list_html "
+        </tr>\n"
+    incr payment_ctr
+}
+
+if {!$payment_ctr} {
+    append payment_list_html "<tr class=roweven><td colspan=2 align=center><i>[lang::message::lookup $user_locale intranet-invoices.No_payments_found]</i></td></tr>\n"
+}
+
+
+if {$write_p} {
+    append payment_list_html "
+        <tr $bgcolor([expr {$payment_ctr % 2}])>
+          <td align=right colspan=3>
+	    <input type=submit name=add value=\"[lang::message::lookup $user_locale intranet-invoices.Add_a_Payment]\">
+	    <input type=submit name=del value=\"[lang::message::lookup $user_locale intranet-invoices.Del]\">
+          </td>
+        </tr>\n"
+}
+append payment_list_html "
+	</table>
+        </form>\n"
+
+
+
+
+
+
+
+
+
+
+
 
 # ---------------------------------------------------------------
 # Special Output: Format using a template
