@@ -70,9 +70,7 @@ if {[info exists expense_date] && ![regexp {^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[
 # Redirect if the type of the object hasn't been defined and
 # if there are DynFields specific for subtypes.
 if {0 == $cost_type_id && ![info exists expense_id]} {
-
     set all_same_p [im_dynfield::subtype_have_same_attributes_p -object_type "im_expense"]
-    set all_same_p 0
     if {!$all_same_p} {
         ad_returnredirect [export_vars -base "/intranet/biz-object-type-select" {{object_type "im_expense"} {return_url $current_url} {type_id_var "cost_type_id"}}]
     }
@@ -249,7 +247,7 @@ ad_form -extend -name $form_id -form {
 set my_expense_id 0
 if {[info exists expense_id]} { set my_expense_id $expense_id }
 set field_cnt [im_dynfield::append_attributes_to_form \
-    -object_subtype_id $cost_type_id \
+    -object_subtype_id $expense_type_id \
     -object_type "im_expense" \
     -form_id $form_id \
     -object_id $my_expense_id \
