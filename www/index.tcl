@@ -171,10 +171,7 @@ template::list::create \
     -row_pretty_plural "[_ intranet-expenses.Expenses_Items]" \
     -elements {
 	expense_chk {
-	    label "<input type=\"checkbox\" 
-			name=\"_dummy\" 
-			onclick=\"acs_ListCheckAll('expenses_list', this.checked)\" 
-			title=\"Check/uncheck all rows\">"
+	    label "<input id=list_check_all type=\"checkbox\" name=\"_dummy\" title=\"Check/uncheck all rows\">"
 	    display_template {
 		@expense_lines.expense_chk;noquote@
 	    }
@@ -381,7 +378,7 @@ set ttt {
 	    label "[_ intranet-expenses.ID]"
 	}
 	bundle_chk {
-	    label "<input type=\"checkbox\" name=\"_dummy\" onclick=\"acs_ListCheckAll('bundles_list', this.checked)\" title=\"Check/uncheck all rows\">"
+	    label "<input type=\"checkbox\" id=list_check_all_bundles_list name=\"_dummy\" title=\"Check/uncheck all rows\">"
 	    display_template {
 		@bundle_lines.bundle_chk;noquote@
 	    }
@@ -491,7 +488,7 @@ append left_navbar_html "
 	  <td class=form-label>[_ intranet-core.Start_Date]</td>
 	  <td class=form-widget>
 	    <nobr><input type='textfield' name='start_date' id='start_date' value='$start_date' size='10'> 
-		<input type=\"button\" style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('start_date', 'y-m-d');\" ></nobr>
+		<input type=\"button\" id=start_date_calendar style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\"></nobr>
 	  </td>
 	</tr>
 	<tr>
@@ -499,7 +496,7 @@ append left_navbar_html "
 	  <td class=form-widget>
        	    <nobr>
 	        <input type='textfield' name='end_date' id='end_date' value='$end_date' size='10'>
-		<input type=\"button\" style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\" onclick =\"return showCalendar('end_date', 'y-m-d');\" >
+		<input type=\"button\" id=end_date_calendar style=\"height:20px; width:20px; background: url('/resources/acs-templating/calendar.gif');\">
 	    </nobr>
 	  </td>
 	</tr>

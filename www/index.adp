@@ -6,6 +6,15 @@
 <property name="left_navbar">@left_navbar_html;literal@</property>
 <property name="show_context_help">@show_context_help_p;literal@</property>
 
+<script type="text/javascript" <if @::__csp_nonce@ not nil>nonce="@::__csp_nonce;literal@"</if>>
+window.addEventListener('load', function() { 
+     document.getElementById('start_date_calendar').addEventListener('click', function() { showCalendar('start_date', 'y-m-d'); });
+     document.getElementById('end_date_calendar').addEventListener('click', function() { showCalendar('end_date', 'y-m-d'); });
+
+     document.getElementById('list_check_all').addEventListener('click', function() { acs_ListCheckAll('expenses_list', this.checked) });
+});
+</script>
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
   <td colspan="3">
