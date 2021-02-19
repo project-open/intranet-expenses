@@ -4,7 +4,7 @@
 # all@devcon.project-open.com
 #
 # All rights reserved. Please check
-# http://www.project-open.com/license/ for details.
+# https://www.project-open.com/license/ for details.
 
 # ---------------------------------------------------------------
 # Page Contract
