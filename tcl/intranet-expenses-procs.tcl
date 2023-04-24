@@ -167,7 +167,7 @@ ad_proc im_expense_bundle_item_sum {
 
 #    if {0 == $common_project_id} {
 #	ad_return_complaint 1 [lang::message::lookup "" intranet-expenses.No_project_specified "No (common) project specified"]
-#	ad_abort_script
+#	ad_script_abort
 #    }
 
      if {0 == $common_project_id} { set common_project_id "" }
